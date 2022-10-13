@@ -127,8 +127,8 @@ btn.addEventListener('click', () => getCountryBetter('australia'));
   
   ![19-4](./img/lecture19-4.jpg)
     👇
-  非promise的callback是Macro task queue
-  promise的callback是micro task queue
+  - 非promise的callback是Macro task queue
+  - promise的callback是micro task queue
   ![19-6](./img/lecture19-6.jpg)
   - 伪代码实现异步操作
   ![19-5](./img/lecture19-5.jpg)
