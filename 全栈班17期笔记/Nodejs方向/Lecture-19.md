@@ -1,7 +1,7 @@
 # Lecture 19 React-5
 ## 1.Promise
 ### 1.1 Definition
- ![[]](lecture19-1.jpg)
+ ![19-1](lecture19-1.jpg)
  - 买彩票的例子：
  create a promise --waiting--> 开奖 settled resolved -> 中奖 fulfilled / 没中 rejected
  ------------------async task-----------------------------------------------------
@@ -118,18 +118,18 @@ btn.addEventListener('click', () => getCountryBetter('australia'));
 ```
 
 ## 2. Event Loop
- ![[]](lecture19-2.jpg)
+ ![19-2](lecture19-2.jpg)
  ### 2.1 Example
-  ![[]](lecture19-3.jpg)
+  ![19-3](lecture19-3.jpg)
   👇
   addeventlistener 的callback被放入callback queue的时机完全取决于异步操作所需时长
-  ![[]](lecture19-4.jpg)
+  ![19-4](lecture19-4.jpg)
   👇
   非promise的callback是Macro task queue
   promise的callback是micro task queue
-  ![[]](lecture19-6.jpg)
+  ![19-6](lecture19-6.jpg)
   - 伪代码实现异步操作
-  ![[]](lecture19-5.jpg)
+  ![19-5](lecture19-5.jpg)
   ### 2.2 优先级
   sync code > promise callback code > callback code
   - promise callback的代码不能过长，不然callback很难执行到
