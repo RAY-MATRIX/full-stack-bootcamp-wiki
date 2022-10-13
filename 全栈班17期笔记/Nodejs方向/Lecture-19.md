@@ -4,7 +4,7 @@
  ![19-1](./img/lecture19-1.jpg)
  - 买彩票的例子：
  create a promise --waiting--> 开奖 settled resolved -> 中奖 fulfilled / 没中 rejected
- ------------------async task-----------------------------------------------------
+
  ### 1.2 Example
  - try catch 用在 async await
 ```js
@@ -120,11 +120,13 @@ btn.addEventListener('click', () => getCountryBetter('australia'));
 ## 2. Event Loop
  ![19-2](./img/lecture19-2.jpg)
  ### 2.1 Example
+ 
   ![19-3](./img/lecture19-3.jpg)
-  👇
-  addeventlistener 的callback被放入callback queue的时机完全取决于异步操作所需时长
+    👇
+  - addeventlistener 的callback被放入callback queue的时机完全取决于异步操作所需时长
+  
   ![19-4](./img/lecture19-4.jpg)
-  👇
+    👇
   非promise的callback是Macro task queue
   promise的callback是micro task queue
   ![19-6](./img/lecture19-6.jpg)
