@@ -128,17 +128,23 @@ export default ExpensesFilter;
  ![17-1](./img/lecture17-1.jpg)
  - 异步代码执行流程
  - example1
-  ![17-2](./img/lecture17-2.jpg) 
-👇
+
+ ![17-2](./img/lecture17-2.jpg) 
+    👇
  ![17-3](./img/lecture17-3.jpg)
  - example2
    - img.src = '' 这句话执行的时候就会触发render
+ 
  ![17-4](./img/lecture17-4.jpg)
  ### 3.2 Promise and life cycle
+ 
  ![17-6](./img/lecture17-6.jpg)
   ![17-7](./img/lecture17-7.jpg)
+  
 ## 4.AJAX 允许我们用后端数据
+
  ![17-5](./img/lecture17-5.jpg)
+ 
  ### 4.1 XMLHttpRequest
  - JSON.parse() json->js 
  - render出的卡片顺序取决于数据返回的先后
