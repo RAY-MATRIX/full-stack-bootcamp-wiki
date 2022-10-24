@@ -1,5 +1,5 @@
-# Lecture 21 MongoDB
-## 21.1 Start mongo server
+# Lecture 22 MongoDB
+## 22.1 Start mongo server
 - Run the following command in separate terminals
   - mongod 在当前的命令行里启动并管理database server(把terminal和mongo进程绑在一起）
   - mongo 
@@ -7,7 +7,7 @@
   - 每次电脑启动时都会把MongoDB自动启动
 > 'mongod' is not recognized as an internal command解决方法：把`mongod.exe`所在的路径贴到命令行上，或加入系统环境变量
 - mongo shell：基于javascript的运行环境  
-## 21.2 MongoDB Command
+## 22.2 MongoDB Command
 - 显示当前数据库的databases
   - `show dbs`
 - 显示当前数据库的集合
@@ -60,7 +60,7 @@
 
 > 如果一个db里没有数据，它是不会显示在db list里的
 
-## 21.3 Relations
+## 22.3 Relations
 - 表和表的关系(建立在站在谁的角度上看的）
   - 1 to 1 (相对的，对于某个student来说，其和address的关系是1对1）
   - 1 to many
@@ -152,7 +152,7 @@
 //而在reference的情况下，因为所有course名称都是引用式地被使用，只需要更新course里的document即可
 ```
 
-### 21.3.1 Advanced Relations Thoughts
+### 22.3.1 Advanced Relations Thoughts
 - Bi-directional referencing vs parent-refence or child reference 双边都做reference或者单边做reference
 - Normalization（所有数据只出现一次） vs Denormalization（把数据进行复制）
   - 数据库规范化(Normalization)是数据库设计的⼀个⾮常重要的基本概念，⽬的是要去除重复的数据，增加数据的⼀致性。实际的作法是会将重复
@@ -169,8 +169,8 @@
   - If read query is much more than write query, go denormalize
   - 读数据的情况比写数据的情况多，做embedded能使数据读得更快
 
-## 21.4 Advanced Database Knowledge
-### 21.4.1 Indexes
+## 22.4 Advanced Database Knowledge
+### 22.4.1 Indexes
 - 索引是⼀种特殊的数据库结构，由数据表中的⼀列或多列组合⽽成，可以⽤来快速查询数据表中有某⼀特定值的记录
 - 通过索引，查询数据时不⽤读完记录的所有信息，⽽只是查询索引列。否则，库系统将读取每条记录的所有信息进⾏匹配。
 - 可以把索引⽐作新华字典的⾳序表。
@@ -189,7 +189,7 @@ mapping（开辟的一个新的空间，作映射）
 - 创建索引和维护索引要耗费时间，这种时间随着数据量的增加⽽增加
   - 只会在必要时加上索引，因为添加新数据时，需要重新计算添加的新数据放在索引的什么地方，耗时间和空间，因此不会在所有地方加上索引
 
-### 21.4.2 Aggregation
+### 22.4.2 Aggregation
 - Aggregation函数
   - 聚合操作处理数据记录并返回计算结果。将来自多个文档的操作组值聚合在一起，并可以对分组的数据执行各种操作以返回单个结果，这也被称为分组查询
   - 通常用于数据分析的情况
@@ -202,7 +202,7 @@ mapping（开辟的一个新的空间，作映射）
 [d1,d3,d4] second pipe
 [d1',d2',d3'] third pipe
 ```
-### 21.4.3 Transactions
+### 22.4.3 Transactions
 - 数据库事务
   - 事务是由一条或多条SQL语句组成的逻辑执行单元, 可以比喻成一个容器, 里面放的就是一堆SQL语句, 这些语句要么全部执行成功, 要么一个都无法执行
   - 常用于银行转账
@@ -211,11 +211,11 @@ mapping（开辟的一个新的空间，作映射）
  
 
 > https://www.datensen.com/data-modeling/moon-modeler-for-databases.html Datensen 画ER diagram的工具
-## 21.2 Mongoose
+## 22.5 Mongoose
 - 是MongoDB专用的ORM (object relational mapper)
 - SQL 数据库使用Sequelize  https://sequelize.org/
 - 基于Mongo Client
-### 21.2.1 Schema vs Models vs Documents
+### 22.5.1 Schema vs Models vs Documents
 
 ```js
 const schema = new mongoose.Schema({name:String});//数据的格式，schemaless数据易于迭代（如储存传感器数据），但是不容易管理
@@ -225,7 +225,7 @@ const document = new Model({name;'document'})
 - 如果mongoDB的数据里有age field ，但是mongoose没有声明age，那么去除的数据也是没有age的
 - 当server发请求给数据库时，数据库会把数据以JSON的格式返回回来，mongoose把JSON转换成一个mongoose object
 - 当想要存储object时，mongoose会把object转换成JSON，放在数据库里
-### 21.2.2 代码实现
+### 22.5.2 代码实现
 - student course M:N
 - teacher course M:N
 - jr-cms.herokuapp.com/api-docs swagger文档
