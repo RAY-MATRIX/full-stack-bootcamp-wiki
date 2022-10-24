@@ -1,6 +1,6 @@
-# Lecture 20 拆分API&Swagger&MongoDB
+# Lecture 21 拆分API&Swagger&MongoDB
 
-## 20.1 拆分api 
+## 21.1 拆分api 
 
 - Nodejs常见项目拆分结构
 ```js
@@ -37,7 +37,7 @@ src
 ```
 - 拆分好的文件库：https://github.com/LazeBear/jr-todos-api-walkthrough
 
-## 20.2 Other Useful Packages
+## 21.2 Other Useful Packages
 - cors
   - 提供 Connect/Express 中间件, 解决跨域问题
 ```js
@@ -110,7 +110,7 @@ logger.info(`Example app listening at http://localhost:${PORT}`);
 console.log(`Example app listening at http://localhost:${PORT}`);
 ```
 
-## 20.3 swagger
+## 21.3 swagger
 - 可交互的API文档
 - 安装
   - npm install swagger-jsdoc 写好的文本转化成html页面
@@ -194,7 +194,7 @@ module.exports = swaggerJsDoc({
 ```
  ![20-2](./img/lecture20-2.png)
 
-## 20.4 数据库类型
+## 21.4 数据库类型
 - SQL structured qurey language
 关系型数据库
 - No SQL / not only sql
@@ -211,7 +211,7 @@ module.exports = swaggerJsDoc({
   - graph-oriented -> neo4j
   - column-family -> cassandra
   
-## 20.5 MongoDB
+## 21.5 MongoDB
 - humongous 庞大的
 - No-SQL 非关系型数据库
 - Stores data in JSON-like documents
@@ -236,7 +236,7 @@ module.exports = swaggerJsDoc({
 
 - schemaless 的优势：数据容易迭代和更新,可以很容易地修改数据的格式，但修改数据时会出现修改前后数据不一致的问题，这时候需要写一个script进行计算
 - schemaless 的劣势：无法方便地遍历数组，需要进行各种判断
-#### 20.5.1 Structure Terminology
+#### 21.5.1 Structure Terminology
 - Database Server中有许多数据库（Database1，Database2），数据库中有许多的collection（User collection、Task collection），collection中有多个document，同样的类型的document会组成一个collection，document中有许多fields
 - document 格式：`{_id:xxx,name:"mason"}`
 - client与server连接
@@ -244,7 +244,7 @@ module.exports = swaggerJsDoc({
   - gui - mongo compass
   - script - mongo-client,mongoose
 - 命令行输入`mongo`，如果server已经打开，则会显示连接成功
-#### 20.5.2 Document and data types
+#### 21.5.2 Document and data types
 - _id: 自动生成，不指定类型，默认用 ObjectID
 - Name: Text(string)
 - Hobbies:array(array of string)
