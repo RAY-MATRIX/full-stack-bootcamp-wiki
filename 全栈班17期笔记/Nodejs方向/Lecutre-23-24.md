@@ -1,4 +1,4 @@
-# Lecture 23-24 Course controller & 
+# Lecture 23-24 Course controller & Authorization
 ## 23 Complete course controller
 - 跟student controller类似
 ## 24.1 处理error
