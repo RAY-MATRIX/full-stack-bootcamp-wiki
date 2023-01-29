@@ -1,0 +1,55 @@
+lecture 09 - Jing Zhou
+
+00:03:27		开始
+00:07:31		分享屏幕
+00:09:00		三个章节，三个点
+00:09:36		this 是重点中的重点，入门 JS 面试成功一般
+00:10:00		closure 也是 JS 面试必考
+00:10:13		快速带过 destructing, spread, rest variables 等等；然后 react
+00:11:13		工程化代码 try catch 好过 if (error1) if (error2)
+00:19:17		JS 可以做到 vue, react, angular 可以做到的任何事; SPA最流行，对应MPA
+00:21:16		micro frontend 微前端 - legacy apps
+00:23:40		整体化地去看前端；读文档很重要，不要轻易求助；自学能力是核心竞争力
+00:28:35		ES6 JavaScript 关键词：this, closure, arrow function, const, let, object, class, map, reduce, spread, scope
+00:29:15		对 this 的理解够深吗？
+00:31:45		const = 常量，let, var = 变量；let, const = block-scoped, var = function-scoped
+00:32:42		hoisting 变量提升：所有 var declarations 提升到 function 顶部
+00:35:15		let, const 有 hoisting 但没有 initialisation; TDZ 暂时性死区
+00:36:55		person.age = 16 合法，因为没有改变指称，只改变了属性
+00:37:20		function 有集中写法？arrow function, regular function (function expression & function declaration)
+00:38:45		regular function - dynamic 'this' binding, depends on how it's invoked
+00:39:22		invocation: simple invocation, method invocation, indirect invocation, constructor invocation
+00:39:42		method vs. function - method 一定有对象，method is married
+00:42:35		function printThis() { console.log(this) } this = global
+00:42:50		如果在浏览器中运行，就是 window；如果不在浏览器（在node）运行，就指向 global context/node
+00:43:42		greeting 是个 method，有对象
+00:48:25		谁 invoke? 赋什么值？
+00:51:18		触发后 undefined，不能 invoke
+00:52:23		可以用 .call 来改变 this 的 binding/assignment
+00:52:55		.call 和 .bind 在做一模一样的事情，把 this bind 到我们想要的地方
+01:04:40		bPerson.greeting = bPerson.greeting.call(aPerson) 报错 undefined
+01:05:15		.apply() method
+01:12:30		大写 function 名称，变成 Constructor function
+01:15:25		学员提问：如果 aPerson 里没有 greeting，会如何？
+01:25:45		myObject 有 myMethod 这个 property
+01:29:32		console.log 会被触发几次？
+01:45:07		休息回来
+01:51:00		closure 先进后出
+01:52:40		destructring 把选中的属性拿出来，不用点/中括号去调用
+01:53:50		array 和 string 的共同点：可以被遍历 iterable
+01:56:28		ES6 的特性过了一遍
+01:57:05		react: what & why?
+01:58:00		component 组件
+02:02:20		function programming; react is declarative
+02:12:20		react 没有任何学习成本，也相对灵活
+02:15:00		readme
+02:18:30		npm run eject
+02:19:30		lint files
+02:20:50		版本号的含义 x.y.z = major.minor.patch (minor = backward compatible)
+02:23:00		tilde ~ 到但不包括, caret ^ 要高一级别
+02:25:45		dependency 的 dependency 也有 dependencies
+02:28:10		从最重要的 app 开始看起 - 典型的 react component，用 jsx, 在JS里写HTML
+02:33:30		root.render 把 app 放进去
+02:34:15		Strict Mode 找错
+02:41:20		预习方式
+

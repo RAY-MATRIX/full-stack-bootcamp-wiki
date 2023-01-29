@@ -1,0 +1,128 @@
+tutorial 8 - Mason
+
+00:01:15		this in JavaScript - this 的值取决于这个函数怎么被调用？；ES6 严格模式
+00:02:40		我们写的代码通常符合严格模式要求
+00:05:00		this 关键词：在普通函数中；在普通函数中和 bind, call, apply 一起
+00:05:50		call 一个一个传，apply 在数组中传；通常不会写，容易找不到
+00:06:53		bind 不调用函数，只对指向绑定，得到新的函数，内容和原来一样
+00:08:16		为什么要指向 this? 因为要知道当前执行上下文；网页计算器比喻解释 this 作用
+00:10:45		this 不指定，就指向 window；除了在 arrow function 当中
+00:10:50		this 关键词在 object 当中；在 function 中使用
+00:13:00		setTimout 导致 this 指向 window，导致上下文丢失；要 bind 来指向 calendar
+00:15:45		在有箭头函数前，异步是大坑，会遇到 undefined 的这个问题
+00:16:15		在有箭头函数前，用 const that = this 做手动绑定
+00:17:40		在有箭头函数后，setTimeout 会跟着指向 calendar
+00:18:00		学员提问：nextDay 里面套一个函数，底下带异步箭头函数
+00:19:00		代码举例，执行 foo()，存在于 nextDay 里面
+00:19:41		调用时，目前的 this 指向 calendar；调用 foo 时前面什么都没有，指向 window
+00:21:15		要 foo() 得到 7 的结果，需要人为指向，foo.call(this) 或 foo.apply(this)
+00:21:30		或者把 const foo 也改成箭头函数，可以直接调用 this，不需要 call
+00:21:50		箭头函数不能人为重新指向（call, apply, bind）；而是 this 一定指向上一层包裹
+00:23:00		实际开发中，只要能写箭头函数，就写箭头函数；除非例外
+00:25:40		setTimeout 是普通函数，谁调用 this 就指向谁
+00:25:50		window 帮忙执行函数，最后 2 指向 window；3 和 1 是一样的；4 跟着 3，都是 newCalendar
+00:27:40		异步在开发中用得多吗？不是多不多的问题，核心逻辑基本全是异步
+00:28:30		4 个 quiz，大家做一下
+00:39:35		哪个普通函数调用，就指向哪里。而且是没有 call, apply, bind 过的普通函数。
+00:47:35		nextDay() { } = nextDay: function () { } 
+00:48:00		key 是 nextDay，value 是 function
+00:57:40		foo 里面的 this，取决于我们调用 foo 的时候，是怎么调用的
+01:00:00		前面没有加任何东西，等于 window 调用它
+01:06:35		普通函数：前面加个 this, 找寻的对象就完全变了。谁调用就指向谁。
+01:08:05		普通函数不管定义时指向；箭头函数要管定义时指向。
+01:09:55		又用箭头函数，又用 this，写成这样纯属坑人。开发不要这样写。
+01:11:30		箭头函数看谁的花括号把它包裹住，然后确定不是 object 的花括号
+01:13:15		这些更像面试题；正常开发时，简单太多了。要理解 JS 原理，靠反面例子。
+01:14:00		第四题去掉结尾的 foo()，什么也不会发生。因为声明了函数但是没有去用。
+01:15:10		只有几个组会用到算法，其它组都用不到。今天没有设计算法，而是纯粹 JS 理论。
+01:18:00		开发时的语法，和实际运行时的语法。
+01:26:10		往 array 当中添加/删除数据
+01:26:35		选择使用 array 还是 object 时，考虑数据需不需要有序、有名字等。有序用 array，有名字用 object
+01:27:00		属性一样用 object，属性不同用 array
+01:27:45		push 添加到尾部；unshift 添加到头部，用得少
+01:28:10		pop 把尾部删除；shift 把头部删除
+01:28:35		splice 处理中间的数据，从第x个开始，删除y个数据
+01:29:30		iteration 遍历，最常见的是 for loop；for... of 用得少；forEach比较常见
+01:31:00		Map 在此基础上，更复杂的操作。如在 forEach 对原始数据做简单的改动。
+01:31:15		此时用另一个操作叫做 Map，和原 array 同样长度。必须输入键和值，否则 undefined
+01:32:20		想要生成和原始的 array 一样长度的新 array 时，才要使用 Map
+01:32:40		不想要一样长度，可以使用 filter，会筛选不符合条件的。
+01:33:45		Reduce 和前面使用 element 和 index 做参数的不一样；Reduce 使用两个参数 - 正常参数和 accumulator
+01:35:50		说完 Iteration 遍历，说 Search
+01:36:45		includes 是简单版本的搜索，some 是复杂版本的
+01:37:15		有时候是要找 element, 有时候要找它的 index，然后用 splice method 删掉
+01:37:35		更复杂的找寻，用 findIndex
+01:39:00		把绿色的水果筛选、找寻出来。对刚才这些有问题吗？find找到第一个就会返回；如要找多个，需要 filter
+01:41:05		for loop 中可以用 break 来中断； forEach 中是不行的。可以用 filter
+01:41:40		不太推荐用 for...of，对对象也不推荐
+01:43:35		根据需求使用 method；不要无脑使用 forEach
+01:44:15		for in 主要针对 object，对 array 没太大意义
+01:44:55		Set 能帮我们去除重复元素，在其它语言中也许见过。开发中出现频率不高。
+01:47:30		为什么要展开？因为不展开时，新 array 里面只有一个 element 就是 Set
+01:47:50		Class - Basic Classes，今天讲的非常基础，JS 中只是语法糖，本质上是 function
+01:49:00		当作模板来创建对象的
+01:49:30		JS 中 prototype 原型概念很重要，和 Class function 的串联息息相关
+01:49:45		开发中应该很少遇到和 prototype 相关的，除非做库 library 开发
+01:50:10		React 以前还用 Class component；现在基本淘汰，只用 function component
+01:51:15		面试时会考原型和继承关系，但不会这么复杂；面试也会基于 Class
+01:53:00		function Person - 注意 P 是大写的；template function 首字母大写
+01:53:40		this 针对实例，我们创建出的 instance，使用 new 的关键字
+01:54:45		这已经是改进后的代码
+01:55:45		JavaScript 里面没有类的概念，但是有类似类的 function，方便其他程序猿理解
+01:56:40		constructor 构造函数，在 class 里面不是一定有
+01:57:35		是否是 template function，核心在于是否使用 new 关键词来调用，创建实例
+01:58:40		现在用 class 创建 function 的写法
+01:59:08		extends { super() } 调用 Person 的构成函数
+01:59:52		子类里面的 method，比如 teach() - 既有 teach，也有继承来的 toString 功能
+02:00:20		JavaScript 里面有检查 - instanceof，是不是 object 的实例
+02:01:30		Class 部分结束
+02:01:55		new 关键词，做了三件事
+02:02:20		第一创建 this object，新对象等于 object，加属性
+02:02:45		把实例和原型关联在一起，原型指向问题
+02:03:10		第三最终把 this 返回出来
+02:04:02		为什么经常看到 constructor 里面会做一个 bind？可能 class component 需要
+02:05:30		现在不太用 class component 来声明，都是用 function component，所以现在不讲
+02:06:45		如果不用 bind，会指向 window，所以 class component 里面需要 bind 操作；但是我们 react 学的是最新的
+02:09:35		需要哪个变量，就解构哪个变量；不需要就不解构。第二个打印 Fluffy 因为它是 getName 箭头函数。
+02:19:00		在 React 里面，Class 里面也可以写箭头函数
+02:20:00		异步 Asynchronous；计算机概念 process 进程 vs. thread 线程
+02:20:40		JavaScript 是一个单线程语言，一次只能做一件事情
+02:21:20		Chrome 浏览器可以同时开好几个 tab，每个渲染需要独立的线程；整个 Chrome 是一个 process 进程
+02:22:30		多数程序一次启动就是一个进程 process；JavaScript 更小，一次启动只是一个线程 thread
+02:23:05		页面渲染和代码执行，都是同一个线程进行的。要保证数据的一致性，和锁的问题。逻辑处理可以修改渲染。
+02:24:15		有些页面渲染是异步获取，向其它服务器请求，然后才能渲染。
+02:25:00		请求、等待、返回，需要等待；如果实际如此，用户不能和页面交互、点击。这不可取。
+02:25:30		异步。耗时的事情，不由 JavaScript 做，而交给其它线程做。JavaScript 本身仍然是单线程。
+02:26:32		同步 synchronous 和异步 asynchronous 一起说。阻塞 block 和非阻塞 non-block 一起说。
+02:27:20		执行代码时，如果需要等待，说明是阻塞的。
+02:27:57		非阻塞：代码执行可以放到其它地方，无需等待；可以继续做其它事情。等它执行完再来看结果。
+02:28:30		现实例子：餐厅订餐。如果直接在电话上查，告诉你能否订位，就是同步；如果说一会打给你，就是异步。
+02:29:15		async await 先不讲，到讲后端数据库的时候再讲 - 本质上是 promise，也先不讲
+02:30:15		来看异步代码。setTimeout 是异步操作。
+02:31:30		function runFor1Sec() 跑1秒。还是先打印 hello，再打印 foo
+02:37:50		先执行 hello 再执行 foo 的原因 - callback queue 排队，等 call stack 为空再执行 - event loop 来管理
+02:40:30		等待时间没有任何影响，完成后只是进入到 callback queue，要执行还是要等 call stack
+02:44:00		即使面试时用 setTimeout 来做倒计时，但是 JavaScript 有偏差，不是 100% 准确的，1秒后”尽快执行“
+02:46:05		前端设置按钮，如果点击，触发一个逻辑。涉及到异步操作。
+02:48:16		event loop：什么时候这个 event 可以被执行了
+02:50:50		课程安排：Node.js 基础知识、API 和 RESTful API、Express 框架和使用
+02:51:45		一开始写先顺着逻辑来，但也要符合工业规范，对逻辑进行拆分
+02:52:15		和数据库连接，会用到 Mongoose
+02:55:10		Node.js 是 JavaScript runtime environment 运行环境 - 不是语言/框架 - Chrome V8 engine
+02:58:15		JavaScript 不擅长大量计算，否则容易阻塞，不能干其它事情 - 其它 server 或程序
+03:05:05		工作两年后，基本全部掌握，没有长新的知识了
+03:06:30		Mason 毕业后进小公司，整个团队他一个人干活。待了2年多，跳到 Canva，Canva 用 Java
+03:08:00		建议去小公司历练，会比较累。需要什么都懂都学习，涨知识比较快。大公司符合流程、拧螺丝。
+03:13:15		如果 JD 说什么都要，工作中基本也会是什么都要干。面试前先想好要找怎样的工作，然后进行准备。
+03:17:30		var 和 const 一样是 function scope
+03:18:40		模块里面没有用到过 this，只有讲知识点时有讲到；实际开发时不会在文件里有 this；会写 function，然后里面有 this
+03:19:10		function component 基本见不到 this；实际开发见到 this 不多，因为有箭头函数。现在 this 不会造成难以解决的 bugs
+03:20:50		面试基础题一定会考 this，三大基础之一。第一 closure 选变量（包括 this），第二异步，第三原型链。
+03:22:10		YouTube 上有很多模拟面试，都是常见问题。JS interview questions
+03:23:12		成长通过写项目，有编程经验后回过头来看理解快得多。
+03:24:35		Mason 某一期讲过的知识点，后期可能就忘了。不常用的知识点就容易忘。太抽象的东西不要深究，直到实际用到。
+03:26:00		开发中经常用到在线编辑工具，如 codesandbox。可以用实践方式来理解代码。
+03:27:13		现在要学新框架、library，也是找在线环境玩一玩。看是否符合预期，用起来是否方便。好用符合需求，再加进项目。
+03:28:20		不用会忘，第一次只要印象。这些知识大概率用不到，等准备面试再看。为了面试准备的。
+03:29:30		如果已经工作，忘了 event loop 怎么用，直接再去查它就好了。
+03:30:00		面试时才需要具体知道怎么工作，因为需要跟人说；平时可以一边，查资料一边做开发。时间长会自然记住。

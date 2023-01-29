@@ -1,0 +1,115 @@
+lecture 10 Node.js(2) RESTful API - Mason
+
+00:03:10		假设访问这个网站 - 标题、文字、input field - 关键字搜索找新闻
+00:03:50		静态资源部署：CSS 等，不会变；和后台 server 部署：用户输入关键字，所有涉及权限
+00:05:24		重点关注 backend server 如何工作 - 通过网页前端进行触发
+00:07:05		server 分为代码、C和C++、硬件
+00:07:20		请求通过端口先到硬件：端口对端口连接通讯
+00:08:00		JavaScript 不能直接控制硬件系统，监听 3000 端口通过中间的 C/C++ library
+00:08:20		C/C++ 可以对硬件进行操作，触发后有 callback, 写在代码里。核心部分是中间。
+00:09:20		Node 里面大部分代码由 C/C++ 组成，实现一系列服务器端的开发，脱离浏览器。
+00:10:00		中间有 mapping，把 JS 代码转化为 C++ 代码，触发 C++ 逻辑，使用硬件。
+00:11:11		架构分为三层：代码、library、硬件。代码是应用。
+00:11:55		bindings 把 JS 代码绑定成 C/C++ 代码，通过 JS 调用功能。另外还有 API 在应用触发。
+00:12:35		蓝色是C/C++，最重要的可能是 Chrome 的 V8 引擎。还有 libuv, zlib
+00:13:10		如何处理函数数据，变成我们能够处理的格式。数据加密、压缩等等。
+00:13:25		Python 底层一定是类似的
+00:13:52		在 Chrome 或浏览器里面，有全局变量叫 window；node.js 里面没有 window，只有 global
+00:15:25		node 的内置模块，叫 module/package. 一个独立的功能，可以帮助 node.js 实现 JS 本来实现不了的功能。
+00:16:25		完全不同。比较常见的功能是倒计时，在浏览器和 node.js 都会用到。
+00:16:55		浏览器里有、server 里没有，获取用户的 location/打开用户的 monitor
+00:18:38		Node 的版本，一直在变的。上课用 16，最新稳定使用 LTS 是 18 版本。16/14 在维护、修复。lifecycle
+00:20:05		稳定版本都是双数，测试版本都是单数。项目开发用双数稳定版本，不追求最新版本，选落后一个版本的。
+00:21:40		每个版本维护期 2年半
+00:22:30		nvm - 相近版本改动小，远距版本改动大。对不同项目用不同版本。10-18 都OK。node 版本以上。
+00:26:28		写一些 Node.js 的代码。node 表示用 node 来执行。一定要弄明白模块化是怎么一回事。
+00:28:40		JS 里面没有 private variable 的概念，难可以通过 IIFE 包起来。
+00:30:02		counter - 另一个例子。想让它能增加，每次加一；但不想让它减少。
+00:31:06		需要导出出去，比如用 return
+00:34:00		node.js 用另一种方式创建模块 module pattern，和 IIFE 非常类似
+00:38:00		module 变量本来就存在；文件夹和文件路径都是绝对路径。
+00:38:16		common js - node.js 的模块通过它来实现，但它本身更复杂一些。
+00:39:00		不想污染全局变量，之前提到全局变量 global 或 globalThis，存在于每一个文件里面。实际开发很少使用。
+00:40:20		仅仅读取、不会改动信息。如需改动，不会用 global 来进行。
+00:41:20		app.js 读取，使用刚才的功能。
+00:42:35		如果 require('http')，可以使用它的名字进行导入模块 - 内置/安装的第三方的，目前主要是内置的。
+00:43:25		利用 closure 原理。
+00:44:15		建议用 module.exports，把所有要导出的放在一起；exports. 就一个一个导出，不太好找，不能混用。
+00:46:30		也有引用改变的问题。所以不建议用 exports.，而是建议用 module.exports
+00:47:45		this 不会在文件（最外层）使用；要用只会在 function 里面。
+00:49:30		const http 最终使用的不是 http，而是 express 的模块。
+00:51:05		const server 里面加个 return，为了保证之后的代码不会再被执行
+00:51:55		跑完没回到可以输入命令的地方，说明当前程序仍然在运行。涉及到 event loop 原理。
+00:52:15		监听 3000 端口。hello 和 about me；home.html
+00:53:00		fs, path 和 if (req.url === '/home')，每次手动重启才能应用改动，否则改动不会自动应用到 server 上
+00:56:50		ctrl + C, 再次 node；req.url 中间有个点哦！
+01:01:45		和传统 server 相比，是一个简化版的 server。很多逻辑已经放到前端处理，以前放在后端。
+01:05:30		回答学员提问：每个 request 从前端到后端的处理流程，每个 request 都有 HTTP method
+01:07:49		- 可以明白吗？- 可以明白。休息 5 分钟。
+01:14:30		函数最终不用 request，而用 response 来返回数据。浏览器里能访问页面就 OK。查看学员代码。
+01:22:00		RESTful API，分为 REST 和 API - 先讲一些 networking 知识
+01:22:20		Protocol 协议/格式，才能进行交流。OSI Model - 5或7层
+01:24:00		最常见 TCP/UDP - 传输数据稳定，数据最后被打包。TCP 确保数据有序传输，UDP则保证数据传过去。
+01:26:00		UDP 传数据不如 TCP 能保证完整性，但其好处是速度快。如果传丢了可以请求再传一份。
+01:26:45		HTTP 协议是基于 TCP 协议的，但不完全，只管如何传输；从 A 到 B 的地址是 IP 管。
+01:28:32		HTTP 目前有 5 个版本：0.9, 1.0, 1.1, 2, 3 - 其中 3 不再基于 TCP 协议了，而是基于 UDP 协议。
+01:29:45		0.9 只能获取数据，返回 HTML 字符串，显示页面；1.0 版本可以是任何格式、任何内容，不止页面。
+01:30:15		1.1 特点是持续连接 persistent connection - http handshake 数据传输完以后，也不关掉。
+01:32:00		2 推出 HTTPS - S for security layer，安全性更好。也对性能做了优化。需要证书安装，P3 时可以了解。
+01:33:30		现在用得最多的是 2，但我们课上用 1.1 - 2 就是 2，没有 2.0 的概念。主要增加就是证书，DevOps，不是开发。
+01:35:59		let's encrypt - 证书之前很贵，上千刀一年；现在开源。
+01:36:40		url 路径 - 哪些对开发有用？URL = Uniform Resource Locator
+01:37:00		协议、授权、主机、端口、路径、哈希
+01:42:25		https -> 443, http -> 80, mongodb -> 27017
+01:45:33		路径和 RESTful 相关，筛选新闻；哈希对开发服务器没用。
+01:48:20		常用 HTTP 方式 - GET, POST, PUT, DELETE, PATCH - PUT & PATCH 经常放在一起用
+01:57:30		Headers; General 是 request 的一部分
+02:07:05		P1 开发的是静态页面，根本涉及不到这些。内部涉及到，但不用管。
+02:08:05		Authorization Header 提供用户信息验证，放到 value 部分。
+02:09:45		常见状态码 - 200 OK, 201 Created, 304 Not Modified, 400 Bad Request, 401 Unauthorized, 404 Not Found, 500 Internal Server Error
+02:15:30		休息 5 分钟
+02:21:45		JSON 让开发者可以读懂 - 只有中间那一行是 JSON 格式：所有 "key"，数字不用引号。
+02:23:50		JSON object 可以被 JavaScript 理解；反之，JavaScript object 不能被 JSON 理解，也不能被 Java 理解。
+02:25:06		JS object 最后一个值后面可以加逗号；JSON object 最后一个值后面不能加逗号，否则格式无效。
+02:25:40		JSON 没有 undefined 属性。最后一个 JSON object 的大括号之后，也不能加逗号。
+02:26:45		可以用 JSON.stringify 把 object 转化为 JSON object；也可以用 JSON.parse 把 JSON object 转化为 JavaScript object
+02:31:30		后端有验证机制，存在还是不存在？只分析想要分析的有效数据 property （也许 10/100）
+02:37:00		JSON 的可读性非常高
+02:37:25		SOAP 的使用在比较老的机构使用比较多，安全性强但是速度慢，要用再学也来得及。
+02:38:55		API 是更大的概念，函数中调用 method；也可以通过相应借口 URL 拿新闻；前端网页和服务器是不同系统，可通过 API 访问函数。无处不在。
+02:41:40		Google Maps 通过 API 可以找到地址、创建 marker 等。普通开发者不用 API 实现不了，用了得到便利。
+02:43:08		函数描述文档：参数和内容。好的 API 的基本应用。Google Maps 是完善的文档，怎么安装、怎么交互。
+02:44:22		web api 网络服务，通过网络方式用到。给复杂功能封装后，提供访问借口，访问需要的功能或程序。
+02:46:35		REST 非常复杂。Representational state transfer，可表述的状态转移。
+02:49:00		HTTP method 描述想要进行的操作，然后用 URL 来定位想要访问的资源。
+02:50:25		stateless 无状态，另一个重要概念。stateful 有状态 - 传统 server，保存用户登录信息。A: login, B: getnews
+02:51:10		对于 stateful server 来说，要先发 A 请求，再发 B 请求。如果先 B 后 A，无法得到新闻。
+02:51:50		先 A 后 B 得到 news；先 B 后 A 也能得到 news。可行，因为 token 在服务器上有效。
+02:53:10		REST 衍生出的设计规范才是我们比较关心的，实践当中要应用。
+02:53:28		REST 是一种 API 类型，除了 REST 以外还有其它的 API 类型。
+02:53:45		另外最常见的是 RPC - Remote Procedure Call
+02:54:20		REST 是规范，可以遵守/不遵守/部分遵守。遵守规范最大的好处，是如果大家都遵守，就不需要花费太多时间弄清楚 API 是干什么的。
+02:56:30		1. versioning 版本 - 专门用来执行。之后版本更新方便。
+02:57:58		2. 用名称来描述资源，并且使用复数形式。/v1/news, /v1/users
+03:00:48		3. 使用贴切的 http method，比如 GET 只用来获取数据。
+03:03:35		4. URL 可以使用嵌套结构。posts { comments }. GET /v1/posts/:postId/comments 来获取某个具体帖子下面的评论
+03:03:40		5. 注意数据返回的大小，对数据进行分页。比如有 1 万个 posts, GET /v1/posts -> 10000 -> 10 per page
+03:04:45		第 20 页，分页每页 100 个。取的数据量越大，耗费的传输时间也越长。
+03:05:25		6. 使用正确的、恰当的状态码 status code 来表示返回的状态/结果。之后开发中可能会更熟悉一些。
+03:06:00		201 -> Post success, 204 -> Delete success
+03:06:18		7. 返回 human-readable, 可读性高的错误信息。坏例子：{"error": 1001}，只有数字，没有解释。只知道出错了，不知道哪里错了。
+03:07:25		一个更好的例子：{"error": "invalid password"}
+03:07:45		现在做开发，应该没有做 stateful server 的。涉及到怎么给 server 做缓存机制，做得好可以很容易地把 stateful 转为 stateless 。比如数据都存在 redis
+03:08:40		学员提问：第 5 个规范。电商网站。搜索 10 个，map 10 个？
+03:09:35		是的。有两种方式。第一种是分页，比如谷歌搜索。每页只显示若干个结果，如果还想看更多，就翻页。
+03:09:55		第二种是 infinite scroll/loading。后端仍然分页处理，但是前端巧妙处理。用户翻页到一半，前端就加载第二页的部分结果了。
+03:10:45		后端一定是返回分页数据的，不用管前端采用哪种方式处理。
+03:11:30		第 7 条。不需要告知用户具体错误信息，采用 mapping 方式。{"error": "A"}, 在 JS 里面：{A: "invalid password"}
+03:12:10		API 有两种不同的使用者。一是内部使用者，自己的前端调用自己的 server。这种情况下，error 怎么写影响不大。
+03:12:48		一些网站，对内部，使用 serialization 序列化。产生乱码、字符串，前端可以解析回 error。序列化操作是为了压缩。
+03:13:32		如果前端是 server 的唯一使用者，error 怎么写差别不大。但是如果想要直接使用，显示在前端，务必显示 human-readable 信息。如不需要，用 mapping
+03:14:22		第 7 条更适用于 public API。下节课会用第三方 API，遵循这个原则。可读性高，告诉用户到底哪里出错了。
+03:15:00		status code 不够用？可以自定义创建新的，有很多没被定义的。但是 mapping 更简单。
+03:15:30		status code = 400, {error: "1"}。剩下内容下节课再讲，下载软件 Postman，注册 newsapi 的账号。protobuf, 不同方式 document
+03:19:00		实际开发时需要考虑 business logic、实际需求，因此变得复杂。
+03:20:00		GraphQL

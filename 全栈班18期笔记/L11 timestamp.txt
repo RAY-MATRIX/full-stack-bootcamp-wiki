@@ -1,0 +1,56 @@
+lecture 11 React: make it STATEful - Jing
+
+00:05:07		share screen 成功
+00:05:38		const, let, var - scope; normal function and arrow function; binding
+00:06:00		不同的 4 种 invocation 赋值方式 single,method, indirect, constructor
+00:06:30		closure 概念，可以用来接触下游的 variables
+00:06:50		React - create react app - 有哪些文件？是干什么的？版本号；declarative, not imperative
+00:08:02		npm run start
+00:13:25		const root; root.render, 首先有 App
+00:13:52		React: Strict Mode, 内容都会被检查 - 最终会有 index.js 的 root component 用到 HTML 文件里
+00:16:45		为什么 function 里面可以镶嵌 html? 一个特殊的 format
+00:21:55		时间的卡片；在动手之前，先计划。
+00:22:55		root 下面有 App, root gets rendered
+00:24:40		src 下面加一个 components 文件夹，约定俗成的操作
+00:26:00		ExpenseItem.js - .js/.jsx 可以写可以不写 - 自从有了 create react App，就给了特殊用法
+00:27:45		用 react App 就不需要去 state .jsx
+00:29:30		div*3, 直接报错了？这是为啥呢？因为每个组件当中，有且只能有一个 root element
+00:30:00		如何解决？把它们都包在一个 root (div) 当中就行了。现在怎么去用它？
+00:31:02		function 还能如何来定义？除了写成 function - Arrow Function; function() or "function declaration"
+00:34:15		填上 className - 为什么 JSX 当中必须用 className? 因为 class 是一个关键词，已被占用
+00:37:00		简单的 responsiveness 处理（左右拉宽度调整）
+00:38:10		Date.prototype.getMonth(); Date.prototype.toLocaleDateString(), Date.prototype.toLocaleDateString(locales, options)
+00:39:05		在文档当中可以找到所有的 locale 信息 - developer.mozilla.org
+00:39:55		澳洲的 locale 是 (locales: 'en-AU', options: {month: 'long'})
+00:41:30		任何 JavaScript 代码想要在 rendering 使用，都必须要用大括号把它括住
+00:45:25		String 是不是 JavaScript 代码？要不要加大括号？这种情况下可以但不推荐，因为没有必要。
+00:48:15		导入 React - 可以省略，因为使用了最新版本的 create-react-app, React 18 可以省略
+00:54:05		网络请求协议时传 Payload 用
+00:55:40		给 Expense 这个 container 加上一个 style file；className='Expenses'，效果明显好多了。
+00:57:20		components 当中都是平级结构，并没有反映出 hierarchy，可以做分包，做更优的 organisation，创建 expenses folder
+00:58:00		Expenses 里面再开一个文件夹，叫做 ExpenseItem，比之前的 structure 看上去好
+00:58:40		Import-Export. export default Expenses;
+00:58:55		我们用的是 ES 6 JavaScript，我们的 import export 被称为 ES module
+01:00:10		default import/export 以及 named import/export
+01:02:45		default export 在 import 过程中是不需要大括号的，但是 named export 一定要
+01:03:45		把 default export 放到组件本身，是一个很好的 practice
+01:07:45		学员反映 props 的传递是最难理解的部分
+01:08:58		目前的课程比较简单，不需要看文档；后续会发文档用以预习。
+01:09:30		handle user event in React - 对哪一个 event 做相应；call back
+01:10:00		state - 状态 - 非常重要的概念；hook, "the useState" hook - 后面 hook 会专门讲
+01:11:30		derive state from previous state/props 都不好
+01:11:55		父传子 - props (top down)；子传父 - state update (bottom up)
+01:12:35		firstTitleElement 明显是一个 DOM 中间的节点；'click' 是需要处理的 event 本身；后面是 CallBack
+01:13:36		怎么看节点 DOM 的文档？看 <button> 文档，在 HTML 中会用 DOM，都有对应的类
+01:15:00		EventTarget -> Node -> Element -> HTMLElement -> HTMLButtonElement 顺序继承
+01:15:30		button 本身没有 event，但是继承了很多 HTMLElement; HTMLElement 又继承了 Element events
+01:19:40		点击后展示 'I am clicked.'；还没点 button，就被直接触发
+01:24:25		用 Arrow Function 比较简单
+01:51:25		把例子全部标注掉，继续给项目添砖加瓦
+01:57:15		<button>Add Expense</button>，丢到 action container 里面
+02:00:00		完成的效果 - Udemy 的课上弄下来的
+02:09:30		需要几个 useState 来管理异步？
+02:13:45		用 1 个 handler 处理 3 个 input
+02:22:40		user data 上传怎么做？
+02:39:40		对 array 进行遍历，并且每次遍历时把它建立 mapping, map 到 ExpenseItem 的组件
+02:43:55		子传父，再子传父；function 可以被当作参数来传递到 ExpenseForm 里
