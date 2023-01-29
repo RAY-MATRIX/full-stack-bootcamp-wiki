@@ -1,4 +1,4 @@
-tutorial 8 - Mason
+lecture 8 - Mason
 
 00:01:15		this in JavaScript - this 的值取决于这个函数怎么被调用？；ES6 严格模式
 00:02:40		我们写的代码通常符合严格模式要求
