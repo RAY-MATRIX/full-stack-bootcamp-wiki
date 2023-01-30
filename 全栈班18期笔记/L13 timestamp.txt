@@ -1,0 +1,64 @@
+Lecture 13 Node.js 4 Build simple server with Express - Mason
+
+00:04:50		不同的 dependencies 和使用场景；接下来讲 scripts
+00:06:45		script 是快捷方式，短的名字，来调动右边真的长的命令
+00:07:40		nodemon 是帮助我们 node.js 开发的工具，只在开发时使用，装到 dev-dependencies
+00:09:28		如果需要在命令行执行，需要把包安装到 global 里面，不能只是 dev-dependencies
+00:10:20		指定 "dev" 名字的 script，npm 会找到，优先检查是否存在在 node_modules 里面
+00:11:38		start, test, lint, lint:fix 都是 scripts 下面的常见命令名；e.g. "lint": "eslint"; "lint:fix": "eslint --fix"
+00:14:10		npm run [script], 其中 run 通常不能省略。npm start, npm test 可以使用，但是是特例。
+00:15:30		dev 命令是开发时使用的；start 是开发完成后在 production environment 启动 server 时使用的
+00:19:12		express 代码 const express = require('express') 等
+00:19:53		解释 express 相关的几行代码是什么意思
+00:22:08		有了服务器后，发送请求，得到 'hello!'
+00:22:50		Express 的理论知识。是轻量级的 framework，但完全足够用来做 server 的开发；基础但重要，包含所有核心组件。
+00:23:30		library 是对 package 和 framework 的总称，用的频率较低
+00:24:10		framework 是一个大 package，由好几个 packages 组成
+00:25:30		keystone.js 和 loopback 等，底层很有可能借助 express 来实现，可以用到其它语言的后端开发
+00:26:55		koa 和 express 的差别，koa 更加插件化，东西都有，但要用需要做安装；处理请求的模式也有差别
+00:27:45		api 包括了 library, package 这些东西
+00:28:55		使用 express 相比使用 http 会简单很多，省略了很多 callback 请求
+00:30:30		也可以使用 express 来监听 post 或 put 请求
+00:38:55		3000 端口是开发时比较常见的，express 喜欢用，react 也喜欢用；8000, 4200, 9000, 3333 也常见
+00:42:29		Middleware 中间件，用中文很难理解。Middleware 是一个函数 function
+00:43:50		express 会管理，并排序、挨个出发；常见接受 request, response, next 这 3 个参数；第三个通常就取名叫 next
+00:48:10		只要在接收参数里写上 next，就能对它进行调用
+01:11:45		注册哪个 Middleware function，哪个就会被触发
+01:17:35		arrow middleware 和普通 middleware 最大的区别是第四个参数，但是写在第一位
+01:23:05		下一个 middleware 可能不存在，如果不存在就产生 path not found
+01:37:50		res.status(201).json({}) 为什么可以在一个函数后面再串联上另一个函数？返回状态码加上数据
+01:42:40		从 body 里面 POST 数据，默认里面没有任何东西，需要借助 middleware
+01:44:45		要从 request body 获取数据，一定要用 express json middleware
+01:45:18		?key=value - key value pair, e.g. ?name=mason
+01:49:30		从 1. body 取数据，方法为 POST, PUT, PATCH 时 - req.body [app.use(express.json()]
+01:50:15		用 2.query param 获取数据 - ?key=value -> GET (with filtering)
+01:50:24		3. route param 的出现场景很多 req.params /v1/users/:userId -> GET POST PUT DELETE
+01:52:05		多个 query params 之间可以用 & 隔开
+01:53:20		“regex 正则表达式”可以用来做路径匹配，但不常用。不好理解，不好读。
+01:54:18		接下来讲 middleware
+01:59:30		这两段代码不应该都被执行，只有一段逻辑应该被执行。应该放在不同分支、不同 condition 里面
+02:00:03		确保代码到这里，后面不会再执行，所以加一个 return
+02:01:54		如果有 error middleware, 写在最后面；本身是独立的 chain, 也不想提前被触发
+02:03:42		监听端口时，有第二个参数，是一个 callback function，成功监听 3000 端口时被执行
+02:05:00		只有状态码 200 时不需要手动做设置，除此之外都需要进行手动修改
+02:11:13		quiz 解答；路径完全匹配才会触发返回
+02:20:40		requirement 做一个小练习
+02:25:30		let id = 1; id++;
+02:28:35		CORS: 在服务器里加一些 headers 来解决 CORS 问题
+02:36:30		这次的课后练习必须做完，是整个课程中的唯一一次，下节课的内容和这个完全相关。
+02:39:15		ID 不回收，永远往上增加。
+02:46:38		每个协议 protocol 都有默认端口，如果不写就会使用默认端口，如果写了就会 overwrite
+02:55:50		不用担心数据丢失，后半段会学数据库。现在先考虑实现核心功能。
+02:57:10		pocketmon-script 只会用到一个 package，就是 axios，涉及挺多新的知识点
+02:58:05		async await 在课程后半段会专门拿出来细讲
+03:01:10		有两种开发模式：OOP: Object-Oriented Programming; 和 FP: Functional Programming
+03:02:05		Bot class, 也许有 10 个 bots；但是建议有 1 个就够了。
+03:04:55		暂时就够了
+03:07:35		async 好几个；async start() {}，然后 bot 就开始工作了
+03:08:00		最下面记得要把 module Bot 导出 - module.exports = { Bot };
+03:08:10		回到 index.js 来，写一个 function
+03:09:49		server 返回了数据，返回了很多不需要的东西
+03:10:50		所有涉及到向其它 server 发送数据，都是异步
+03:13:25		抓住放了以后才能得到相应的 berries；而且最多只能抓 18 只，如果背包满了，再抓都是白费
+03:16:15		new Date() 加时间戳
+03:24:20		server 支持 Pokemon 对战
