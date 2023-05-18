@@ -36,6 +36,7 @@ Ref: ‘Student’}
 24.	查找时Populate（’courses’,”name description”）可以显示course 的name和description。如果只是Populate（’courses’），会显示course的所有信息。 例子: StudentModel.findById(id).populate(‘course’).exec();
 25.	数据验证： Joi包 验证email例子： Joi.string().email().validate(email).error === undefined 
 26.	在接收数据之前验证：
+
 Const schema = Joi.object({
 Name: Joi.string().min().max().required(),
 Description: Joi.string().optional(),
