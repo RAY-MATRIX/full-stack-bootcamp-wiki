@@ -8,7 +8,7 @@
 6.  Req.params(取 url 中的变量) 用于取特定的一个对象/users/:id; 一般用的命令有 GET PUT DELETE PATCH
 7.  Req.query (query param) /users?age=xxx&pageSize=xx 配合 GET 使用
 8.  Req.body 配合 POST PUT PATCH 使用，用于更新与添加数据，一定要配合 app.use(express.json)
-9.  Middleware , app.use()可匹配某个特定需求开头所有的请求，app.get 只能匹配特定的开头
+9.  Middleware , app.use()可匹配某个特定需求开头所有的请求，比如app.use('/users', middleware), 会匹配所有users开头的请求:/users/123, /users/student。 app.get 只能匹配特定的开头，比如app.get('/users', middleware),只会匹配get /users
 10. Middleware 有 next（），会启动下一个 middleware。没有 next 会 left hanging。Next 里有参数就会进入 error middleware
 11. // root level
 
