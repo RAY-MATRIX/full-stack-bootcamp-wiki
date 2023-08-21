@@ -1,0 +1,52 @@
+body{
+    width: 80%;
+    margin: auto;
+    max-width: 1300px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    flex: auto;
+    justify-content: space-around;
+    padding: 0;
+}
+
+nav li{
+    display: inline;
+}
+
+form {
+    display: flex;
+    margin-bottom: 0;
+    flex: 2px;
+    justify-content: center;
+}
+
+
+main{
+    display: flex;
+    justify-content: space-between;
+}
+
+article {
+    flex: 4;
+}
+
+article h2 {
+    text-align: center;
+}
+
+aside {
+    flex: 2;
+}
