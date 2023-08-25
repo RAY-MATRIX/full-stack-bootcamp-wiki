@@ -3,7 +3,7 @@
 > 只有写个人demo数据库的时候才可以在数据库中直接操作表，否则任何商业化操作都尽可能或只能通过代码“记录”下来，也就是Data Migration.
 
 - 记录方法通过在项目中和创建sql文件
-    - 命名约定，例如： `V1_create_user_table`
+    - 命名约定，例如： `V1__create_user_table`
     - 主键 - `primary key` - 用来确认唯一标识符
     - `CHAR` - 存储字符串数据类型 - 固定长度（比VARCHAR更快因为使用的存储空间更小）
     - `VARCHAR` - 存储字符串数据类型- 可变长度
@@ -18,8 +18,8 @@
     );
     ```
     > 如果对V1进行修改并重新运行的话则会(被flyway) 报错（违反规范）
-    > 解决办法： 创建一个新的sql文件来进行更新 例如：`V2_change_email_name`
-- Dig more about Flyways
+    > 解决办法： 创建一个新的sql文件来进行更新 例如：`V2__change_email_name`
+- Digging more about Flyways
     https://documentation.red-gate.com/fd
     
 - OOP是需要深入了解的编程思想 Object-Oriented Programming
@@ -37,11 +37,10 @@
     
     > `@CreationTimestamp` 和 `@UpdateTimestamp`两个注释用于自动创建和更新时间
     
-1. 创建一个Repository接口并继承JpaRepository（其中有一系列的功能来支持增删改查）
+2. 创建一个Repository接口并继承JpaRepository（其中有一系列的功能来支持增删改查）
     `UserRepository.java`
     ```java
     public interface UserRepository extends JpaRepository<UserInfo, Long> {
-        //
         Optional<UserInfo> findByEmail(String email);
     }
     ```
