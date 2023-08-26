@@ -1,0 +1,25 @@
+		
+### Express
+	
+	1. NPM
+		先搜，再试试
+		商业项目需要做考虑能不能用某个包（MIT可用）
+		
+		
+		
+	npm init -y
+	-y使用默认参数或者默认同意
+	一定在根目录执行
+	
+	npm i express
+	
+	package-lock.json 固定版本
+	对于不同开发环境
+	从repo pull后首先npm i安装所有依赖
+	
+	node_modules依赖库（不进行上传）
+	
+	npm uninstall express
+	
+	4.16.4
+	major.minor.patch
