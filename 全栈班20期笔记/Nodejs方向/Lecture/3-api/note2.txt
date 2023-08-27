@@ -1,0 +1,132 @@
+### REST（API）
+
+    A, B
+	
+	发送顺序
+	A，B = B，A
+	
+	一定要先发A再发B
+	StateFull
+	
+	GET， POST, PUT, DELETE(CRUD)
+	
+	支持不同格式：JSON， XML， HTML
+	
+	具有统一规范
+	
+### RESTful API
+	
+	属于web API的一种
+	
+	设计规范：
+	
+	1.	给api加上版本（versioning）
+		example.com/v1/users
+		example.com/api/users
+		example.com/api/v1/users
+		api.example.com/v1/users
+	  
+	2.	用名字描述资源，并使用复数形式
+		/users
+		/items
+		/news
+	  
+	3.	使用相应的http method来描述api的操作
+		
+		GET -> 获取
+		POST -> 添加
+		.
+		.
+		.
+	
+	4. 设计URL的时候，可以使用嵌套结构
+		/users/{userid}/posts/{postid} 
+		/users/:userid/posts/:postid
+		
+	5.	使用合适的状态码， 来描述请求的结果
+		200 -> ok     有一些server只返回两种状态码， 200 or 500， 难以trouble shooting
+		201 -> created
+		.
+		.
+		.
+		
+	6.	注意返回数据的大小 -> 进行分页
+		GET /user
+		总users 10000个
+		一次返回一页，每页10/100个
+		
+		返回第一页的10个user
+		GET /users?page=16pagesSize=10
+		返回第二页的100个user
+		GET /user?page=26pagesSize=100
+		default: page=1, pageSize = 10/100
+		
+		
+	7.	返回具体的错误信息
+		400 (本身不包含多少有用信息)
+		可以定义状态码内容
+		{
+			"message" : "password is too weak"
+		}
+		
+		API authorization
+		
+		fe page/news
+		
+		/api/news + token
+		成功
+		
+		redirect -> /login
+		失败
+		
+		return 错误代码
+		
+###其他web api
+
+	1. SOAP（Simple Object Access Protocol）
+	
+		有安全需求使用
+	
+	2. GraphQL
+	
+		指定某资源的某个/类信息
+		
+	3. WebSocket
+	
+		实时通信
+	
+	4. gRPC
+		
+		Protocol Buffer
+		
+### API验证和授权
+
+	1. Authentication（验证）
+		验明正身
+		
+	2. Authoritarian（授权）
+		是否有操作权限
+
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
