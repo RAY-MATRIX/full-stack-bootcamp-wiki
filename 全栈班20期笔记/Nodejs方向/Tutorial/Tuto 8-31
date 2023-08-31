@@ -1,0 +1,87 @@
+Node
+	Run the js environments
+Express
+	express is a framework for you to create app
+	express is based on node
+Npm	
+	package/plugins for your app you want to use
+
+
+###Node
+JS runtime environment
+
+Feature:
+	1. Asynchronous
+	
+###Express
+
+1.Framework to build web and api server
+2.Middleware
+3.Router
+4.Error Handler
+
+###Npm
+1. Node package manager
+2. Manage package
+3. Manage Dependencies
+
+install sequencely
+
+### Npm ???
+1. Package.json
+2. package
+
+###package-lock, yarn-lodk
+Lock package versions
+
+
+### Npm commands
+npm inin(create a package.json(config file))
+npm install
+npm install xxx -D(Save to Dev)
+npm install xxx --save(Save to all environments)
+npm install xxx -g (Global)
+npm install xxx (only will install the package, node v5 above will add --save)
+npm install xxx -force(Don't use ) 
+
+### Npx
+1. Package runner tool comes with npm
+2. Template package that don't wang install golbally
+
+###Yarn
+Package manager
+与Npm区别: Performs parallel installation
+
+###Yarn commands
+yarn init (create a package.json(config file))
+yarn install 
+yarn add xxx
+yarn add xxx -D (Save to Dev)
+yarn add xxx -g (Global)
+
+###Workflow
+1.Yarn/npm init
+	create a package.json
+2.yarn/npm install 
+	it will create a node_modules folder (where the code is)
+	it will upload/create and lock the file
+3. yarn/npm add/install
+	update package.json
+	add the package to node_modules folder
+	it will update and lock the package version
+	
+###Restful API
+API Standard
+
+GET (eg: /posts)
+GET (eg: /posts/:id)
+POST (eg: /posts)
+PUT (eg: /posts/:id), larger cuse update while object, create
+PATCH (eg: /posts/:id) smaller because update some part of the object
+DELETE (eg: /posts/:id)
+
+###PostMan
+A tools for you to test your api
+
+{{url}}/api/v1/ 右上角manage Environment下选择不同环境，设置变量，减少重复操作
+
