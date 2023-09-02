@@ -1,7 +1,8 @@
 ###prac讲解
-一定加上gitignor来避免加入node_modules
 
-命名规则要具体 taskRouter
+	一定加上gitignor来避免加入node_modules
+
+	命名规则要具体 taskRouter
 
 ###end point
 
