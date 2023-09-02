@@ -5,9 +5,9 @@
 
 ###end point
 
-1: 返回用res.json(xxx)
+1: 	返回用res.json(xxx)
 
-taskRouter.get('/tasks', )	
+	taskRouter.get('/tasks', )	
 	const {description} = req.query;
 	if (description) {
 		const filteredTask = tasks.filter((task => task.description.includes(description)
@@ -18,6 +18,7 @@ taskRouter.get('/tasks', )
 	res.json(task)
 	
 2: id类型转换
+
 	filter做遍历，目的是找到就返回，不需要filter
 	tasks.find就可以
 	// 不写if (!task.id)，因为找到undefined时js会报错
@@ -33,6 +34,7 @@ taskRouter.get('/tasks', )
 	
 	
 3: update
+
 	task未找到，同上
 	task找到
 	
@@ -49,6 +51,7 @@ taskRouter.get('/tasks', )
 	res.json(task);
 	
 4: POST
+
 	const {description} = req.body
 	or 
 	const {description, done=false} = req.body
@@ -69,6 +72,7 @@ taskRouter.get('/tasks', )
 	
 	
 5: DELETE
+
 	id类型转换
 	取index
 	js使用equal check使用===
@@ -87,6 +91,7 @@ taskRouter.get('/tasks', )
 	
 	
 6: cors
+
 	不使用cors模块
 	被CORS block
 	const cors = (req, res, next) => {
