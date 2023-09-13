@@ -41,3 +41,11 @@
 	
 	delete
 	db.student.deleteMany({})  !!!!!会删掉collecting中的所有数据
+
+
+	数据关系
+	Embedded   1 to 1
+	Reference  1 to many
+	           many to many
+
+			   
