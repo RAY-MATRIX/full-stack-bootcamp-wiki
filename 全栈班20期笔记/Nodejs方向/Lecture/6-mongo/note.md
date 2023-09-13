@@ -47,5 +47,76 @@
 	Embedded   1 to 1
 	Reference  1 to many
 	           many to many
+	1:1
+	student : address -> 1:1
+	address : student -> 1:1    
+	
+	1:M
+	student : address -> 1:M
+	address : student -> 1:1
+	
+	M:N
+	student : address -> 1:M
+	address : student -> 1:N
 
-			   
+	student collection
+	Denormalization
+	[
+		{
+			_id: 1,
+			name: "Mason",
+			addresses: [
+				{
+					_id: "A1",
+					city:"Brisbane",
+					postcode: 4000
+				},
+				{
+					_id: "A2",
+					city: "Melbouren",
+					postcode: 3000
+				}
+			]
+		},
+		{
+			_id: 2,
+			name: "Json",
+			addresses: [
+				{
+					_id: "A1",
+					city:"Brisbane",
+					postcode: 4000
+				},
+				{
+					_id: "A2",
+					city: "Melbouren",
+					postcode: 3000
+				}
+			]
+		}
+	]
+
+
+	bi-directional referencing(双边关联) vs parent-refence or child reference（单边关联）
+	Normalization vs Denormalization 
+	one to million relationship
+
+
+	sensors, logs
+	logs在无限增长
+
+	MongoDb, every document -> 16MB
+
+	Do embedded if you can 
+
+	不适合embedded情况
+	A:B -> 1:1
+	B:C -> 1:1
+
+	One to couple, consider array of embedded docs
+
+	One to many, consider arraty of references
+
+	One to million, consider parent-reference
+
+	If read query is much more than write query, go denormalize
