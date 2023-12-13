@@ -364,7 +364,7 @@ HTML Input Attributes
 - disable
 - readonly
 - placeholder
--required
+- required
 
 Examples：
 ```html
