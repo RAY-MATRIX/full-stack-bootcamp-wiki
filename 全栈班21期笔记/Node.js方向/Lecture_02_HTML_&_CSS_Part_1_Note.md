@@ -21,17 +21,17 @@ Document:
 [W3School](https://w3schools.com/html),
 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
-- 编写HTML5文档注意:
-    - 遵守W3C相关标准
-    - W3C提倡内容和结构分离
-    - HTML结构具有语义化
-        - HTML机构清晰，易读性和维护性, 便于团队开发和维护
-        - 无障碍阅读友好(accessibility)
-        - 搜索引擎友好，可根据标签确定上下文和权重，有利于SEO
+编写HTML5文档注意:
+- 遵守W3C相关标准
+- W3C提倡内容和结构分离
+- HTML结构具有语义化
+    - HTML机构清晰，易读性和维护性, 便于团队开发和维护
+    - 无障碍阅读友好(accessibility)
+    - 搜索引擎友好，可根据标签确定上下文和权重，有利于SEO
 
 >虽然HTML和CSS很基本，但面试也有可能会被问到, 更多的是谁javascript问题。
 
-- 现代Web app 的三大基石——HTML, CSS, JavaScript  
+现代Web app 的三大基石——HTML, CSS, JavaScript  
     - HTML用于构建网页结构  
     - CSS用于样式化网页  
     - JavaScript是一种脚本语言，用于使网页具有交互性和动态性  
@@ -74,7 +74,8 @@ Document:
 - 属性提供有关元素的附加信息
 - 属性始终在开始标记中指定
 - 属性通常以名称/值对的形式出现，例如：name="value",但也有例外
-比如
+
+Example
 ```html
 <html lang="en">
 <!-- html 标签的 lang 属性 -->
